@@ -20,9 +20,12 @@
   $row = mysql_fetch_array($result);
   if ($row['username'] == $username && $row['password'] == $password) {
     if($username != ""){
-      echo "Login success!!! Welcome ".$row['username'];
+      session_start();
+      $_SESSION['user'] = $row['username'];
+      header("Location:../cprd.php");
+      //echo "Login success!!! Welcome ".$row['username'];
     } else {
-      echo "Failed to login!";
+      //echo "Failed to login!";
     }
   } else {
     echo "Failed to login!";
