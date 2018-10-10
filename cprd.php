@@ -52,14 +52,6 @@
                 <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5"> </td>
               </tr>
               <?php
-              /*echo "<tr>";
-              echo "<td>";
-              echo $row['idQues'];
-              echo "</td>";
-              echo "<td>";
-              echo $row['ques'];
-              echo "</td>";
-              echo "</tr>";*/
             }
           ?>
         </form>
