@@ -33,6 +33,7 @@
           <?php
             // Connect to Server and select DB
             mysql_connect("localhost", "root", "mysql");
+            mysql_query("SET NAMES 'utf8'");
             mysql_select_db("cprd");
 
             // Query DB for users
