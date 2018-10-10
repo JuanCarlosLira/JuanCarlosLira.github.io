@@ -21,6 +21,12 @@
           <input type="submit" id="btn" value="Login" />
         </p>
       </form>
+
+      <?php
+        if ($_GET["f"] == t) {
+          echo "<p>Failed to Login!!</p>";
+        }
+      ?>
     </div>
 
   </body>

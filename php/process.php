@@ -25,9 +25,11 @@
       header("Location:../cprd.php");
       //echo "Login success!!! Welcome ".$row['username'];
     } else {
+      header('Location: ../index.php?f=t');
       //echo "Failed to login!";
     }
   } else {
-    echo "Failed to login!";
+    header('Location: ../index.php?f=t');
+    //echo "Failed to login!";
   }
 ?>
