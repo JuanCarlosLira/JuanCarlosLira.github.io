@@ -1,12 +1,12 @@
 <?php
   session_start();
   $varsession = $_SESSION['user'];
-/*
+
   if ($varsession == null || $varsession == '') {
     //echo "Unauthorized Acces";
     header('Location:index.php');
     die();
-  }*/
+  }
 ?>
 
 <!DOCTYPE html>
