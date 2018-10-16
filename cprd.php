@@ -19,7 +19,7 @@
     position: relative;
 
     top: 45%;
-    background-image:url("deportes.png");
+    background-image:url("imgs/deportes.png");
     background-size:1000px 200px;
     background-repeat: no-repeat;
     background-position: center;
@@ -41,8 +41,8 @@
   <body>
     <div id=menu width=100% height=25%>
 
-    <img align="left"src="tec.png" height="50" width="50">
-    <img align="left"src="life.png" height="50" width="75">  <p3 align="center">
+    <img align="left"src="imgs/tec.jpg" height="50" width="50">
+    <img align="left"src="imgs/life.jpg" height="50" width="75">  <p3 align="center">
     <br><br>  <p3><h1 font-color="yellow" background-color="white">.  </h1></p3><br><br>
     </div>
     <p3 align="center"><h1 font-color="E7FF03" background-color="white">CPRD </h1></p3>
