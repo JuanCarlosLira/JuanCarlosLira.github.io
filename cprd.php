@@ -13,6 +13,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title> CPRD  </title>
   </head>
 <style>  #menu {
@@ -102,8 +103,8 @@
     <br>
     <br>
   </form>
-    <table>
-      <thead>
+    <table class="table table-striped">
+      <thead class="thead-dark">
         <tr align="left">
           <h3 >INSTRUCCIONES</h3>
           Contesta cada una de las preguntas indicando en qué medida te encuentras de acuerdo con ellas en una etapa general, no buena ni mala.
