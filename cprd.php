@@ -15,94 +15,100 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title> CPRD  </title>
+
+    <style>
+      #menu {
+        position: relative;
+        top: 45%;
+        background-image:url("imgs/deportes.png");
+        background-size:1000px 200px;
+        background-repeat: no-repeat;
+        background-position: center;
+        width:100%;
+        height:100%;
+        font-size: 65;
+        font-family:Times New Roman ;
+      }
+
+      #form {
+        margin: auto;
+        width: 90%;
+        border: 3px solid green;
+        padding: 10px;
+      }
+
+      .detailForm{
+        margin: auto;
+        width: 90%;
+        border: 3px solid #505050;
+        padding: 10px;
+      }
+
+      body
+      {
+        font-family:Helvetica;
+        font-size: 10;
+      }
+    </style>
   </head>
-<style>  #menu {
-    position: relative;
 
-    top: 45%;
-    background-image:url("imgs/deportes.png");
-    background-size:1000px 200px;
-    background-repeat: no-repeat;
-    background-position: center;
-    width:100%;
-    height:100%;
-    font-size: 65;
-
-    font-family:Times New Roman ;
-
-
-  }
-
-  body
-  {
-    font-family:Helvetica;
-    font-size: 10;
-  }
-</style>
   <body>
-    <div id=menu width=100% height=25%>
-
-    <img align="left"src="imgs/tec.jpg" height="50" width="50">
-    <img align="left"src="imgs/life.jpg" height="50" width="75">  <p3 align="center">
-    <br><br>  <p3><h1 font-color="yellow" background-color="white">.  </h1></p3><br><br>
+    <div id=menu>
+      <img align="left" src="imgs/tec.jpg"  alt="Tec"  height="50" width="50">
+      <img align="left" src="imgs/life.jpg" alt="Life" height="50" width="75">
+      <br><br><br>
+      <br><br><br>
+      <br><br>
     </div>
-    <p3 align="center"><h1 font-color="E7FF03" background-color="white">CPRD </h1></p3>
-  <p1 align="left">  <h3>Bievenido: <?php echo $_SESSION['user']; ?></h3></p1>
 
-  <p align="right">  <a  href="php/logOut.php"> LogOut </a></p>
+    <br>
+    <h1>CPRD </h1>
+    <h3>Bievenido: <?php echo $_SESSION['user']; ?></h3>
+    <p align="right">
+      <a class="btn btn-dark" href="php/logOut.php" role="button">Log Out</a>
+    </p>
+    <br>
 
-    <table align="center">
-      <thead>
-        <tr align="center">
-
-          <h3 align="left">DATOS PERSONALES</h3>
-<form>
-        </tr>
-        <tr>
-          <th>
-            Apellido Paterno: <input type="text" name="ap_pat">
-          </th>
-          <th>
-            Apellido Materno: <input type="text" name="ap_mat">
-          </th>
-          <th>
-            Nombre(s): <input type="text" name="nombre">
-          </th>
-        </tr>
-
+    <div class="detailForm">
+      <h3 align="center">Datos Personales</h3>
+      <form class="form" action="index.pnp" method="post">
+        <table align="center">
           <tr>
+            <td>Nombre:</td>
+            <td><input type="text" name="name"></td>
+            <td>Apellido Paterno:</td>
+            <td><input type="text" name="ap_pat"></td>
+            <td>Apellido Materno:</td>
+            <td><input type="text" name="ap_mat"></td>
           </tr>
           <tr>
+            <td>Sexo:</td>
+            <td>
+              <select>
+                <option value="F"> Femenino </option>
+                <option value="M"> Masculino </option>
+              </select>
+            </td>
+            <td>Fecha de Nacimiento:</td>
+            <td><input type="date" name="f_nac"></td>
+            <td>Deporte:</td>
+            <td>
+              <select>
+                <option value="Basketball Femenil"> Basketball Femenil </option>
+                <option value="Basketball Varonil"> Basketball Varonil </option>
+                <option value="Volleyball Femenil"> Volleyball Femenil </option>
+                <option value="Soccer Varonil"> Soccer Varonil </option>
+                <option value="Fútbol Rápido Femenil"> Fútbol Rápido Femenil </option>
+                <option value="Baloncesto Juvenil"> Baloncesto Juvenil </option>
+              </select>
+            </td>
           </tr>
-        <tr>
-          <th>
-            Sexo: <input type="radio" name="sexo" value="F">F <input type="radio" name="sexo" value="M">M
-          </th>
-          <th>
+        </table>
+      </form>
+    </div>
 
-              Fecha de nacimiento: <input type="date" name="f_nac">
-
-          </th>
-
-          <th>
-            Deporte: <input list="deporte">
-
-<datalist id="deporte">
-  <option value="Basketball Femenil">
-    <option value="Basketball Varonil">
-      <option value="Volleyball Femenil">
-  <option value="Soccer Varonil">
-    <option value="Fútbol Rápido Femenil">
-  <option value="Baloncesto Juvenil">
-</datalist>
-          </th>
-
-        </tr>
-      </thead>
-    </table>
     <br>
-    <br>
-  </form>
+
     <table class="table table-striped">
       <thead class="thead-dark">
         <tr align="left">
