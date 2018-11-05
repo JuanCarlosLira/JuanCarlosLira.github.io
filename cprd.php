@@ -39,7 +39,7 @@
 
       .detailForm{
         margin: auto;
-        width: 90%;
+        width: 95%;
         border: 3px solid #505050;
         padding: 10px;
       }
@@ -109,52 +109,58 @@
 
     <br>
 
-    <table class="table table-striped">
-      <thead class="thead-dark">
-        <tr align="left">
-          <h3 >INSTRUCCIONES</h3>
-          Contesta cada una de las preguntas indicando en qué medida te encuentras de acuerdo con ellas en una etapa general, no buena ni mala.
-          <br> Siendo 1 totalmente en desacuerdo y 5 totalmente de acuerdo.
-        </tr>
+    <div class="container-fluid">
+      <h3> Instrucciones </h3>
+      <p>
+        Contesta cada una de las preguntas indicando en qué medida te encuentras de acuerdo con ellas en una etapa general, no buena ni mala.
+        <br>
+        Siendo 1 totalmente en desacuerdo y 5 totalmente de acuerdo.
+      </p>
+      <br>
 
-        <tr >
-          <p align="center">
-          <th><h2>CPRD</h2></th><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-            </p>
-        </tr>
+      <form action="index.html" method="POST">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Pregunta</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              // Connect to Server and select DB
+              mysql_connect("localhost", "root", "mysql");
+              mysql_query("SET NAMES 'utf8'");
+              mysql_select_db("cprd");
 
-      </thead>
-      <tbody>
-        <form action="index.html" method="POST">
+              // Query DB for users
+              $result = mysql_query("select * from form")
+                        or die("Failed to query database ".mysql_error());
 
-          <?php
-            // Connect to Server and select DB
-            mysql_connect("localhost", "root", "mysql");
-            mysql_query("SET NAMES 'utf8'");
-            mysql_select_db("cprd");
-
-            // Query DB for users
-            $result = mysql_query("select * from form")
-                      or die("Failed to query database ".mysql_error());
-
-            // Add entry for every question
-            while ($row = mysql_fetch_assoc($result)) {
-              ?>
-              <tr>
-                <td><?php echo $row['idQues']; ?></td>
-                <td><?php echo $row['ques']; ?></td>
-                <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="1"> </td>
-                <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="2"> </td>
-                <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="3"> </td>
-                <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="4"> </td>
-                <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5"> </td>
-              </tr>
-              <?php
-            }
-          ?>
-        </form>
-      </tbody>
-    </table>
+              // Add entry for every question
+              while ($row = mysql_fetch_assoc($result)) {
+                ?>
+                <tr>
+                  <td><?php echo $row['idQues']; ?></td>
+                  <td><?php echo $row['ques']; ?></td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="1"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="2"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="3"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="4"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5"> </td>
+                </tr>
+                <?php
+              }
+            ?>
+          </tbody>
+        </table>
+      </form>
+    </div>
 
   </body>
 </html>
