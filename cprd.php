@@ -81,7 +81,7 @@
 
     <div class="detailForm">
       <h3 align="center">Datos Personales</h3>
-      <form class="form" action="cprd.php" method="post">
+      <form class="form" action="php/usrDet.php" method="post">
         <table align="center">
           <tr>
             <td>Nombre:</td>
@@ -94,7 +94,7 @@
           <tr>
             <td>Sexo:</td>
             <td>
-              <select>
+              <select name="sex">
                 <?php
                   if($row['sex']=="F") echo "<option value=\"F\" selected='true'> Femenino </option>";
                   else echo "\t<option value=\"F\"> Femenino </option>\n";
@@ -108,7 +108,7 @@
             <td><input type="date" name="f_nac" value="<?php echo $row['dob']; ?>"></td>
             <td>Deporte:</td>
             <td>
-              <select>
+              <select name="sport">
                 <?php
                   if($row['sport']=="Basketball Femenil") echo "<option value=\"Basketball Femenil\" selected='true'> Basketball Femenil </option>";
                   else echo "\t<option> Basketball Femenil </option>\n";
