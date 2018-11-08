@@ -149,7 +149,7 @@
       </p>
       <br>
 
-      <form action="index.html" method="POST">
+      <form action="php/form.php" method="POST">
         <table class="table table-striped">
           <thead class="thead-dark">
             <tr>
@@ -195,6 +195,10 @@
             ?>
           </tbody>
         </table>
+        <div align="right">
+          <input class="btn btn-dark" type="submit" name="save" value="Guardar" />
+        </div>
+        <br>
       </form>
     </div>
 
