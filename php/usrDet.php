@@ -39,7 +39,25 @@
   mysql_select_db("cprd");
 
   // Query DB for users
-  $query = "INSERT INTO userDet (mat,name,apPat,apMat,sex,dob,sport)
+  $query = "SELECT mat FROM userDet WHERE mat='$user'";
+  $result = mysql_query($query)
+            or die("Failed to query database ".mysql_error());
+  if (mysql_num_rows($result)==0) {
+    echo "Perform Insert";
+    $query = "INSERT INTO userDet (mat,name,apPat,apMat,sex,dob,sport)
+              VALUES ('$user','$name','$apPat','$apMat','$sex','$dob','$sport')";
+  } else {
+    echo "Perform Update";
+    $query = "UPDATE userDet
+              SET name = \"$name\",
+              apPat = \"$apPat\",
+              apMat = \"$apMat\",
+              sex = \"$sex\",
+              dob = \"$dob\",
+              sport = \"$sport\"
+              WHERE mat = \"$user\"";
+  }
+  /*$query = "INSERT INTO userDet (mat,name,apPat,apMat,sex,dob,sport)
             VALUES ('$user','$name','$apPat','$apMat','$sex','$dob','$sport')
             ON DUPLICATE KEY UPDATE
             name = '$name',
@@ -47,16 +65,18 @@
             apMat = '$apMat',
             sex = '$sex',
             dob = '$dob',
-            sport = '$sport'";
+            sport = '$sport'";*/
   $result = mysql_query($query)
             or die("Failed to query database ".mysql_error());
 
-  echo '<p>Query: ' . $query . "\n";
+  header("Location:../cprd.php");
+
+  /*echo '<p>Query: ' . $query . "\n";
   echo '<p>User: ' . $_SESSION['user'] . "\n";
   echo '<p>Nombre: ' . $name . "\n";
   echo '<p>Ap Pat: ' . $apPat . "\n";
   echo '<p>Ap Mat: ' . $apMat . "\n";
   echo '<p>Sexo: ' . $sex . "\n";
   echo '<p>D of B: ' . $dob . "\n";
-  echo '<p>Deporte: ' . $sport . "\n";
+  echo '<p>Deporte: ' . $sport . "\n";*/
 ?>
