@@ -7,6 +7,16 @@
     header('Location:index.php');
     die();
   }
+
+  // Connect to Server and select DB
+  mysql_connect("localhost", "root", "mysql");
+  mysql_query("SET NAMES 'utf8'");
+  mysql_select_db("cprd");
+
+  // Query DB for users
+  $result = mysql_query("select * from userDet where mat = '$varsession'")
+            or die("Failed to query database ".mysql_error());
+  $row = mysql_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -71,39 +81,60 @@
 
     <div class="detailForm">
       <h3 align="center">Datos Personales</h3>
-      <form class="form" action="index.pnp" method="post">
+      <form class="form" action="cprd.php" method="post">
         <table align="center">
           <tr>
             <td>Nombre:</td>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" name="name" value="<?php echo $row['name']; ?>"></td>
             <td>Apellido Paterno:</td>
-            <td><input type="text" name="ap_pat"></td>
+            <td><input type="text" name="ap_pat" value="<?php echo $row['apPat']; ?>"></td>
             <td>Apellido Materno:</td>
-            <td><input type="text" name="ap_mat"></td>
+            <td><input type="text" name="ap_mat" value="<?php echo $row['apMat']; ?>"></td>
           </tr>
           <tr>
             <td>Sexo:</td>
             <td>
               <select>
-                <option value="F"> Femenino </option>
-                <option value="M"> Masculino </option>
+                <?php
+                  if($row['sex']=="F") echo "<option value=\"F\" selected='true'> Femenino </option>";
+                  else echo "\t<option value=\"F\"> Femenino </option>\n";
+
+                  if($row['sex']=="M") echo "<option value=\"M\" selected='true'> Masculino </option>";
+                  else echo "\t<option value=\"M\"> Masculino </option>\n";
+                ?>
               </select>
             </td>
             <td>Fecha de Nacimiento:</td>
-            <td><input type="date" name="f_nac"></td>
+            <td><input type="date" name="f_nac" value="<?php echo $row['dob']; ?>"></td>
             <td>Deporte:</td>
             <td>
               <select>
-                <option value="Basketball Femenil"> Basketball Femenil </option>
-                <option value="Basketball Varonil"> Basketball Varonil </option>
-                <option value="Volleyball Femenil"> Volleyball Femenil </option>
-                <option value="Soccer Varonil"> Soccer Varonil </option>
-                <option value="Fútbol Rápido Femenil"> Fútbol Rápido Femenil </option>
-                <option value="Baloncesto Juvenil"> Baloncesto Juvenil </option>
+                <?php
+                  if($row['sport']=="Basketball Femenil") echo "<option value=\"Basketball Femenil\" selected='true'> Basketball Femenil </option>";
+                  else echo "\t<option> Basketball Femenil </option>\n";
+
+                  if($row['sport']=="Basketball Varonil") echo "<option value=\"Basketball Varonil\" selected='true'> Basketball Varonil </option>";
+                  else echo "\t<option> Basketball Varonil </option>\n";
+
+                  if($row['sport']=="Volleyball Femenil") echo "<option value=\"Volleyball Femenil\" selected='true'> Volleyball Femenil </option>";
+                  else echo "\t<option> Volleyball Femenil </option>\n";
+
+                  if($row['sport']=="Soccer Varonil") echo "<option value=\"Soccer Varonil\" selected='true'> Soccer Varonil </option>";
+                  else echo "\t<option> Soccer Varonil </option>\n";
+
+                  if($row['sport']=="Fútbol Rápido Femenil") echo "<option value=\"Fútbol Rápido Femenil\" selected='true'> Fútbol Rápido Femenil </option>";
+                  else echo "\t<option> Fútbol Rápido Femenil </option>\n";
+
+                  if($row['sport']=="Baloncesto Juvenil") echo "<option value=\"Baloncesto Juvenil\" selected='true'> Baloncesto Juvenil </option>";
+                  else echo "\t<option> Baloncesto Juvenil </option>\n";
+                ?>
               </select>
             </td>
           </tr>
         </table>
+        <div align="right">
+          <input class="btn btn-dark" type="submit" name="save" value="Guardar" />
+        </div>
       </form>
     </div>
 
@@ -121,6 +152,11 @@
       <form action="index.html" method="POST">
         <table class="table table-striped">
           <thead class="thead-dark">
+            <tr>
+              <th colspan="2"></th>
+              <th colspan="3"> Totalmente en Desacuerdo</th>
+              <th colspan="2"> Totalmente Deacuerdo</th>
+            </tr>
             <tr>
               <th>#</th>
               <th>Pregunta</th>
