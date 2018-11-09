@@ -180,6 +180,13 @@
 
               // Add entry for every question
               while ($row = mysql_fetch_assoc($result)) {
+                $idQues = $row['idQues'];
+                $query = "SELECT * FROM ans WHERE mat='$varsession' AND ques = $idQues";
+                // Query DB answer
+                $resultAns = mysql_query($query)
+                          or die("Failed to query database ".mysql_error());
+                if (mysql_num_rows($resultAns)==0) {
+                  // code...
                 ?>
                 <tr>
                   <td><?php echo $row['idQues']; ?></td>
@@ -191,6 +198,90 @@
                   <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5"> </td>
                 </tr>
                 <?php
+                } else {
+                  $rowAns = mysql_fetch_assoc($resultAns);
+                  $ans = $rowAns['ans'];
+                  switch ($ans) {
+                    case 1:
+                ?>
+                <tr>
+                  <td><?php echo $row['idQues']; ?></td>
+                  <td><?php echo $row['ques']; ?></td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="1" checked="true"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="2"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="3"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="4"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5"> </td>
+                </tr>
+                <?php
+                      //echo "One Selected";
+                      break;
+                    case 2:
+                ?>
+                <tr>
+                  <td><?php echo $row['idQues']; ?></td>
+                  <td><?php echo $row['ques']; ?></td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="1"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="2" checked="true"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="3"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="4"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5"> </td>
+                </tr>
+                <?php
+                      //echo "Two Selected";
+                      break;
+                    case 3:
+                ?>
+                <tr>
+                  <td><?php echo $row['idQues']; ?></td>
+                  <td><?php echo $row['ques']; ?></td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="1"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="2"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="3" checked="true"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="4"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5"> </td>
+                </tr>
+                <?php
+                      //echo "Three Selected";
+                      break;
+                    case 4:
+                ?>
+                <tr>
+                  <td><?php echo $row['idQues']; ?></td>
+                  <td><?php echo $row['ques']; ?></td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="1"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="2"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="3"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="4" checked="true"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5"> </td>
+                </tr>
+                <?php
+                      //echo "Four Selected";
+                      break;
+                    case 5:
+                ?>
+                <tr>
+                  <td><?php echo $row['idQues']; ?></td>
+                  <td><?php echo $row['ques']; ?></td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="1"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="2"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="3"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="4"> </td>
+                  <td> <input type="radio" name="q<?php echo $row['idQues']; ?>" value="5" checked="true"> </td>
+                </tr>
+                <?php
+                      //echo "Five Selected";
+                      break;
+                    default:
+                      // code...
+                      break;
+                  }
+                  /*echo "<tr>
+                          <td>" . $row['idQues'] . "</td>
+                          <td>" . $row['ques'] . "</td>
+
+                        </tr>";*/
+                }
               }
             ?>
           </tbody>
